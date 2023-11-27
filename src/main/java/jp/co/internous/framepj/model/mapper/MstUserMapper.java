@@ -10,10 +10,10 @@ import org.apache.ibatis.annotations.Update;
 import jp.co.internous.framepj.model.domain.MstUser;
 
 /**
- * mst_userにアクセスするDAO
- * @author インターノウス
- *
- */
+* mst_userにアクセスするDAO
+* @author インターノウス
+*
+*/
 @Mapper
 public interface MstUserMapper {
 	/**
@@ -21,7 +21,16 @@ public interface MstUserMapper {
 	 * @param user ユーザー情報
 	 * @return 登録件数
 	 */
-	@Insert("XXXX")
+	@Insert("INSERT INTO mst_user ("
+			+ "user_name, password, "
+			+ "family_name, first_name, family_name_kana, first_name_kana, "
+			+ "gender"
+			+ ") "
+			+ "VALUES ("
+			+ "#{userName}, #{password}, "
+			+ "#{familyName}, #{firstName}, #{familyNameKana}, #{firstNameKana}, "
+			+ "#{gender}"
+			+ ")")
 	@Options(useGeneratedKeys=true, keyProperty="id")
 	int insert(MstUser user);
 	
@@ -31,7 +40,7 @@ public interface MstUserMapper {
 	 * @param password パスワード
 	 * @return ユーザー情報
 	 */
-	@Select("XXXX")
+	@Select("SELECT * FROM mst_user WHERE user_name = #{userName} AND password = #{password}")
 	MstUser findByUserNameAndPassword(
 			@Param("userName") String userName,
 			@Param("password") String password);
@@ -41,7 +50,7 @@ public interface MstUserMapper {
 	 * @param userName ユーザー名
 	 * @return 件数
 	 */
-	@Select("XXXX")
+	@Select("SELECT count(id) FROM mst_user WHERE user_name = #{userName}")
 	int findCountByUserName(String userName);
 	
 	/**
@@ -50,7 +59,7 @@ public interface MstUserMapper {
 	 * @param password パスワード
 	 * @return 更新件数
 	 */
-	@Update("XXXX")
+	@Update("UPDATE mst_user SET password = #{password}, updated_at = now() WHERE user_name = #{userName}")
 	int updatePassword(
 			@Param("userName") String userName,
 			@Param("password") String password);
