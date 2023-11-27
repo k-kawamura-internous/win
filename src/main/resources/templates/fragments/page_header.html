@@ -30,7 +30,7 @@
        * SUCCESS時(then)： 通信結果に応じてログイン処理を呼び出す
        *　ERROR時(catch)： エラー情報を console に出力する
        */
-      fetch("/framepj/auth/login", {
+      fetch("/frameweb/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postObj),

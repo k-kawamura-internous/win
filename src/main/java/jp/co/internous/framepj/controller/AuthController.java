@@ -46,12 +46,12 @@ public class AuthController {
 		
 		int tmpUserId = loginSession.getTmpUserId();
 		// 仮IDでカート追加されていれば、本ユーザーIDに更新する。
-		if (user != null && tmpUserId != 0) {
-			int count = cartMapper.findCountByUserId(tmpUserId);
-			if (count > 0) {
-				cartMapper.updateUserId(user.getId(), tmpUserId);
-			}
-		}
+//		if (user != null && tmpUserId != 0) {
+//			int count = cartMapper.findCountByUserId(tmpUserId);
+//			if (count > 0) {
+//				cartMapper.updateUserId(user.getId(), tmpUserId);
+//			}
+//		}
 		
 		if (user != null) {
 			loginSession.setTmpUserId(0);
