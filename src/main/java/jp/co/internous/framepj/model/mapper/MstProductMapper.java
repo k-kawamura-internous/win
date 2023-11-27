@@ -19,7 +19,7 @@ public interface MstProductMapper {
 	 * 商品情報を取得する
 	 * @return 商品情報リスト
 	 */
-	@Select("XXXX")
+	@Select("SELECT * from mst_product")
 	List<MstProduct> find();
 	
 	/**

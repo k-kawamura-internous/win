@@ -19,7 +19,8 @@ public interface MstCategoryMapper {
 	 * カテゴリー情報を取得する
 	 * @return カテゴリー情報リスト
 	 */
-	@Select("XXXX")
+	@Select(value="SELECT * FROM mst_category")
 	List<MstCategory> find();
+
 
 }
